@@ -22,3 +22,16 @@ track_id = re.search(r'track/([a-zA-Z0-9]+)', track_url).group(1)
 track = sp.track(track_id)
 print(track)
 
+#Extract Metadata
+
+track_data = {
+    'Track Name' : track['name'],
+    'Artist' : track['artists'][0]['name'],
+    'Album' : track['album']['name'],
+    'Popularity' : track['popularity'],
+    'Duration (minutes)' : track['duration_ms'] / 60000
+
+}
+
+#Display Metadata
+
