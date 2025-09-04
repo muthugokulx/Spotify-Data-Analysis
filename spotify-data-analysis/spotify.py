@@ -33,5 +33,13 @@ track_data = {
 
 }
 
-#Display Metadata
+#Convert Metadata to Dataframe
+df = pd.DataFrame(track_data)
+print("\n Print data as DataFrame")
+print(df)
+
+#Save metadata to csv
+df.to_csv("Spotify_track_data.csv", index=False)
+
+
 
