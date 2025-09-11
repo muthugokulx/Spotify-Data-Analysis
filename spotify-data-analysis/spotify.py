@@ -6,8 +6,8 @@ import re
 
 #Set up client Credentials
 sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(
-    client_id = "f630ad3f2a8f4ed2a2ac610b5121f50b",
-    client_secret = "aedbdbe0ec224b26b440c906344503b4"
+    client_id = "****************************",
+    client_secret = "***************************"
 ))
 
 
