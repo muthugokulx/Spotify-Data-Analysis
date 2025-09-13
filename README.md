@@ -37,6 +37,8 @@ pip install spotipy pandas matplotlib requests
 ## 📊 Example Output
 
 Bar chart comparing track popularity and duration in minutes for the given song.
+![Bar Chart Example](spotify-data-analysis/assets/image.png)
+
 
 
 
