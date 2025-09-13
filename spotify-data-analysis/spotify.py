@@ -3,12 +3,27 @@ import spotipy
 import pandas as pd
 import matplotlib.pyplot as plt
 import re
+import mysql.connector
 
-#Set up client Credentials
+#Set up Spotify API Credentials
 sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(
     client_id = "f630ad3f2a8f4ed2a2ac610b5121f50b",
     client_secret = "aedbdbe0ec224b26b440c906344503b4"
 ))
+
+#MySQL Database Connection Creentials
+
+db_config = {
+    "host" : "localhost",
+    "user" : "root",
+    "password" : "root",
+    "database" : "spotify_db" 
+}
+
+#Connect to database
+
+connection = mysql.connector.connect(**db_config)
+cursor = connection.cursor()
 
 
 #Full Track URL
@@ -31,6 +46,27 @@ track_data = {
     'Duration (minutes)' : track['duration_ms'] / 60000
 
 }
+
+#Insert Data into mysql
+insert_query = """
+INSERT INTO spotigy_tracks (track_name, artist, album, popularity, duration_minute)
+VALUES (%s, %s, %s, %s, %s)
+"""
+
+values = (
+    track_data["Track Name"],
+    track_data["Artist"],
+    track_data["Album"],
+    track_data["Popularity"],
+    track_data["Duration (minutes)"]
+)
+
+cursor.execute(insert_query, values)
+
+connection.commit()
+
+
+cursor.close()
 
 #Convert Metadata to Dataframe
 df = pd.DataFrame([track_data])
