@@ -11,7 +11,7 @@ sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(
     client_secret = "***************************"
 ))
 
-#MySQL Database Connection Creentials
+#MySQL Database Connection Credntials
 
 db_config = {
     "host" : "localhost",
@@ -30,8 +30,7 @@ cursor = connection.cursor()
 
 track_url = "3h4T9Bg8OVSUYa6danHeH5"
 
-#Extract Track Id Directly from URL using Regex
-
+#Extract Track Id Directly from URL 
 
 track = sp.track(track_url)
 print(track)
@@ -64,7 +63,6 @@ values = (
 cursor.execute(insert_query, values)
 
 connection.commit()
-
 
 cursor.close()
 
